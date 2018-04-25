@@ -22,16 +22,16 @@
                 
                 <p:outputLabel/>
                 <p:commandButton id="boton" value="Convertir"
-                                 update=""/>
+                                 update="#{temperaturaFormBean.convertirGrados()}"/>
                 
                 <p:outputLabel/>
-                <p:outputLabel id="labelFahrenheit" value="Fahrenheit: #{temperaturaFormBean.convertirGrados()}"/>
+                <p:outputLabel id="labelFahrenheit" value="Fahrenheit: #{temperaturaFormBean.fr}"/>
                 <p:outputLabel/>
                 <p:outputLabel/>
-                <p:outputLabel id="labelCelsius" value="Celsius: "/>
+                <p:outputLabel id="labelCelsius" value="Celsius: #{temperaturaFormBean.cl}"/>
                 <p:outputLabel/>
                 <p:outputLabel/>
-                <p:outputLabel id="labelKelvin" value="Kelvin: "/>
+                <p:outputLabel id="labelKelvin" value="Kelvin: #{temperaturaFormBean.kl}"/>
             </h:panelGrid>
         </p:panel>
     </h:body>

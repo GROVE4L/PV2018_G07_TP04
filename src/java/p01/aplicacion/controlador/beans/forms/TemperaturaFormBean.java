@@ -22,6 +22,30 @@ public class TemperaturaFormBean {
     private double fr;
     private double cl;
     private double kl;
+
+    public double getFr() {
+        return fr;
+    }
+
+    public void setFr(double fr) {
+        this.fr = fr;
+    }
+
+    public double getCl() {
+        return cl;
+    }
+
+    public void setCl(double cl) {
+        this.cl = cl;
+    }
+
+    public double getKl() {
+        return kl;
+    }
+
+    public void setKl(double kl) {
+        this.kl = kl;
+    }
             
             
     public void convertirGrados(){
