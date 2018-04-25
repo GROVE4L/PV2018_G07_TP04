@@ -9,12 +9,22 @@
     <h:body>
         <p:panel id="panel1" header="Ingreso de Numeros">
             <h:form id="form1">
-                <p:panelGrid id="panelGrid1" columns="2">
+                <p:panelGrid id="panelGrid1" columns="2" styleClass="ui-noborder">
                     <p:outputLabel value="Ingrese numero:" />
-                    <p:inputNumber id="iptNumero" />
-                    <p:outputLabel/>
-                    <p:commandButton id="btnCargar" value="Cargar#{arregloNumeroFormBean.listaNumeros.addNumero(iptNumero)}" update="lblTamano" > </p:commandButton>
-                    <p:outputLabel id="lblTamano" value="Tamaño: #{arregloNumeroFormBean.listaNumeros.tamanoArreglo()}"/>
+                    <p:inputNumber id="iptNumero" decimalPlaces="0" value="#{arregloNumeroFormBean.numeroIngresado}"/>
+                    <p:commandButton id="btnVer" value="Ver Tabla"/>
+                    
+                    <p:commandButton id="btnCargar" value="Cargar" action="#{arregloNumeroFormBean.agregarNumero()}" update="panelResultado" /> 
+                    <p:panel id="panelResultado">
+                        <p:outputLabel value="Tamaño: #{arregloNumeroFormBean.listaNumeros.tamanoArreglo()}"/>
+                        <p/>
+                        <p:outputLabel value="Maximo: #{arregloNumeroFormBean.listaNumeros.mayorNumero()}"/>
+                        <p/>
+                        <p:outputLabel value="Minimo: #{arregloNumeroFormBean.listaNumeros.menorNumero()}"/>
+                        <p/>
+                        <p:outputLabel value="Promedio: #{arregloNumeroFormBean.listaNumeros.promedioNumero()}"/>
+                        <p/>
+                    </p:panel>
                 </p:panelGrid>
             </h:form>
         </p:panel>

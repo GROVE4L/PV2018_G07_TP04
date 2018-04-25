@@ -13,10 +13,24 @@ import javax.faces.bean.ViewScoped;
 @ViewScoped
 public class ArregloNumeroFormBean implements Serializable{
     private ArregloNumero listaNumeros ;
-
+    private int numeroIngresado;
+    
+    public void agregarNumero() {
+        listaNumeros.agregarNumero(this.numeroIngresado);
+        
+    }
+    
     public ArregloNumeroFormBean() {
         listaNumeros = new ArregloNumero();
         
+    }
+
+    public int getNumeroIngresado() {
+        return numeroIngresado;
+    }
+
+    public void setNumeroIngresado(int numeroIngresado) {
+        this.numeroIngresado = numeroIngresado;
     }
     
     public ArregloNumeroFormBean(ArregloNumero listaNumeros) {
