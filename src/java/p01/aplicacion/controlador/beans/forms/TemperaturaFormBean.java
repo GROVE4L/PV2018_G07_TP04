@@ -23,6 +23,29 @@ public class TemperaturaFormBean {
     private double cl;
     private double kl;
 
+                
+    public void convertirGrados(double valor){
+        if (grado.compareToIgnoreCase("Fr")){
+            fr=Integer.parseInt(grado);
+            kl=(Integer.parseInt(grado)+459.67)*5/9;
+            cl=(Integer.parseInt(grado)-32)*5/9;
+            }
+        else{
+            if(grado.compareToIgnoreCase("Cl")){
+                fr=Integer.parseInt(grado)+32;
+                cl=Integer.parseInt(grado);
+                kl=Integer.parseInt(grado)+273.15;
+            }
+            else{
+                if(grado.compareToIgnoreCase("KL")){
+                    fr=1.8*(Integer.parseInt(grado)-273)+32;
+                    cl=Integer.parseInt(grado)-273.15;
+                    kl=Integer.parseInt(grado);
+                }
+            }
+        }
+    }
+    
     public double getFr() {
         return fr;
     }
@@ -46,30 +69,7 @@ public class TemperaturaFormBean {
     public void setKl(double kl) {
         this.kl = kl;
     }
-            
-            
-    public void convertirGrados(){
-        if (grado.equalsIgnoreCase("Fr")){
-            fr=Integer.parseInt(grado);
-            kl=(Integer.parseInt(grado)+459.67)*5/9;
-            cl=(Integer.parseInt(grado)-32)*5/9;
-            }
-        else{
-            if(grado.equalsIgnoreCase("Cl")){
-                fr=Integer.parseInt(grado)+32;
-                cl=Integer.parseInt(grado);
-                kl=Integer.parseInt(grado)+273.15;
-            }
-            else{
-                if(grado.equalsIgnoreCase("Kl")){
-                    fr=1.8*(Integer.parseInt(grado)-273)+32;
-                    cl=Integer.parseInt(grado)-273.15;
-                    kl=Integer.parseInt(grado);
-                }
-            }
-        }
-    }
-    
+                
     public String getGrado() {
         return grado;
     }
