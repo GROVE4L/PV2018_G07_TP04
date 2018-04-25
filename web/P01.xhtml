@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Aplicacion Temperatura</title>
+    </h:head>
+    <h:body>
+        <p:panel id="panel" header="Ingrese la Temperatura">
+            <h:panelGrid id="panelGrid" columns="3">
+                <p:outputLabel id="labelTemperatura" value="Grados: "/>
+                <p:inputNumber id="ingresarNumero" decimalPlaces="2" thousandSeparator="." decimalSeparator=","
+                               value="#{temperaturaFormBean.temperatura.grado}"/>
+                        
+                <p:selectOneMenu id="console" value="#{temperaturaFormBean.grado}" style="width:125px">
+                <f:selectItem itemLabel="Fahrenheit" itemValue="Fr" />
+                <f:selectItem itemLabel="Celsius" itemValue="Cl" />
+                <f:selectItem itemLabel="Kelvin" itemValue="Kl" />
+                </p:selectOneMenu>
+                
+                <p:outputLabel/>
+                <p:commandButton id="boton" value="Convertir"
+                                 update=""/>
+                
+                <p:outputLabel/>
+                <p:outputLabel id="labelFahrenheit" value="Fahrenheit: #{temperaturaFormBean.convertirGrados()}"/>
+                <p:outputLabel/>
+                <p:outputLabel/>
+                <p:outputLabel id="labelCelsius" value="Celsius: "/>
+                <p:outputLabel/>
+                <p:outputLabel/>
+                <p:outputLabel id="labelKelvin" value="Kelvin: "/>
+            </h:panelGrid>
+        </p:panel>
+    </h:body>
+</html>
+
