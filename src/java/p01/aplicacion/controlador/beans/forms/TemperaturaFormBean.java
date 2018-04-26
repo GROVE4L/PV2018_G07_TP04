@@ -16,19 +16,42 @@ import javax.faces.bean.ViewScoped;
 @ManagedBean
 @ViewScoped
 public class TemperaturaFormBean {
-    
+    private Temperatura temperatura;
     private String nombreGrado;
     private double gradoIngresado;
     
     public void TemperaturaFormBean(){        
-    
+        temperatura = new Temperatura();
     }
     
     public void conversor(){
-        Temperatura temperatura = new Temperatura();
         temperatura.asiganarGrado(gradoIngresado);
         temperatura.asignarNombreGrado(nombreGrado);
         temperatura.convertirGrados();
+    }
+
+    public Temperatura getTemperatura() {
+        return temperatura;
+    }
+
+    public void setTemperatura(Temperatura temperatura) {
+        this.temperatura = temperatura;
+    }
+
+    public String getNombreGrado() {
+        return nombreGrado;
+    }
+
+    public void setNombreGrado(String nombreGrado) {
+        this.nombreGrado = nombreGrado;
+    }
+
+    public double getGradoIngresado() {
+        return gradoIngresado;
+    }
+
+    public void setGradoIngresado(double gradoIngresado) {
+        this.gradoIngresado = gradoIngresado;
     }
     
 }    

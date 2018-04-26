@@ -42,7 +42,7 @@ public class Temperatura {
             System.out.println("Farenheit: " + grado);
             System.out.println("Celsius: " + ((grado-32)/1.8));
             System.out.println("Kelvin: " + ((grado+459.67)*5/9));
-        }
+            }
         else{
             if(nombreGrado.equalsIgnoreCase("Kl")){
                 System.out.println("Farenheit: "+(grado*9/5-459.67));
