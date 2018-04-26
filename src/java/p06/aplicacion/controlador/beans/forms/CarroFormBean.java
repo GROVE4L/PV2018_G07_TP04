@@ -1,4 +1,4 @@
-package p07.aplicacion.controlador.beans.forms;
+package p06.aplicacion.controlador.beans.forms;
 
 import java.util.ArrayList;
 import javax.faces.application.FacesMessage;
@@ -6,7 +6,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import org.primefaces.event.RowEditEvent;
-import p07.aplicacion.modelo.dominio.Carro;
+import p06.aplicacion.modelo.dominio.Carro;
 
 /**
  *

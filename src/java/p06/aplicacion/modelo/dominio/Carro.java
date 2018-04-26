@@ -1,4 +1,4 @@
-package p07.aplicacion.modelo.dominio;
+package p06.aplicacion.modelo.dominio;
 
 import java.io.Serializable;
 
