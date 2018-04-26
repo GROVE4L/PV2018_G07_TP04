@@ -5,16 +5,17 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>TP 04 - Punto 07</title>
+        <title>TP 04 - Punto 08</title>
     </h:head>
     <h:body>
         <p:panel id="panel1" header="Listado de Vehiculos">            
             <h:form id="formularioLibros">     
-                <p:panelGrid id="panelRegistro" columns="2" styleClass="ui-noborder">
-                    <p:outputLabel value="Ingrese ISBN" /> <p:inputNumber decimalPlaces="0" value="#{manualFormBean.isbnIngresado}" />
-                    <p:outputLabel value="Ingrese Titulo" /> <p:inputText value="#{manualFormBean.tituloIngresado}" />
-                    <p:outputLabel /> 
-                    <p:selectOneMenu value="#{manualFormBean.autorIngresado}" style="width:192px">
+                <p:panelGrid id="panelRegistro" columns="5" styleClass="ui-noborder">
+                    <p:outputLabel value="Ingrese ISBN" /> <p:inputNumber decimalPlaces="0" value="#{p8ManualFormBean.isbnIngresado}" />
+                    <p:outputLabel value="Buscar Libro por Autor"/> <p:inputText value="#{p8ManualFormBean.tituloBuscado}"/> <p:commandButton value="Buscar" update="labelBusqueda"/>
+                    <p:outputLabel value="Ingrese Titulo" /> <p:inputText value="#{p8ManualFormBean.tituloIngresado}" />
+                    <p:outputLabel value="¿Existe libro del Auto?"/><p:outputLabel id="labelBusqueda" value="#{p8ManualFormBean.buscarTitulo()}"/><p:outputLabel/><p:outputLabel/>
+                    <p:selectOneMenu value="#{p8ManualFormBean.autorIngresado}" style="width:192px">
                         <f:selectItem itemLabel="Seleccione Autor" itemValue="" />
                         <f:selectItem itemLabel="Stephen King" itemValue="Stephen King" />
                         <f:selectItem itemLabel="John Cántaro" itemValue="John Cántaro" />
@@ -22,11 +23,13 @@
                         <f:selectItem itemLabel="JK Rowling" itemValue="JK Rowling" />
                         <f:selectItem itemLabel="Mark Laught" itemValue="Mark Laught" />
                     </p:selectOneMenu>
-                    <p:outputLabel value="Ingrese Precio" /> <p:inputNumber decimalPlaces="2" value="#{manualFormBean.precioIngresado}" />
-                    <p:outputLabel/> <p:commandButton value="Cargar Manual" action="#{manualFormBean.agregarManual()}" update="tablaManuales"/>
+                    <p:outputLabel/><p:outputLabel/><p:outputLabel/>
+                    <p:outputLabel value="Ingrese Precio" /> <p:inputNumber decimalPlaces="2" value="#{p8ManualFormBean.precioIngresado}" />
+                    <p:outputLabel/><p:outputLabel/><p:outputLabel/>
+                    <p:outputLabel/> <p:commandButton value="Cargar Manual" action="#{p8ManualFormBean.agregarManual()}" update="tablaManuales"/>
                 </p:panelGrid>
                 <p:panelGrid id="tablaManuales" columns="1">
-                    <p:dataTable var="man" value="#{manualFormBean.listaManual}">
+                    <p:dataTable var="man" value="#{p8ManualFormBean.listaManual}">
                         <p:column headerText="ISBN">
                             <h:outputText value="#{man.isbn}" />
                         </p:column>
