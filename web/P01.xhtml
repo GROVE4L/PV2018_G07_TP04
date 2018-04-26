@@ -12,9 +12,9 @@
             <h:panelGrid id="panelGrid" columns="3">
                 <p:outputLabel id="labelTemperatura" value="Grados: "/>
                 <p:inputNumber id="ingresarNumero" decimalPlaces="2" thousandSeparator="." decimalSeparator=","
-                               value="#{temperaturaFormBean.temperatura.grado}"/>
+                               value="#{temperaturaFormBean.gradoIngresado}"/>
                         
-                <p:selectOneMenu id="console" value="#{temperaturaFormBean.grado}" style="width:125px">
+                <p:selectOneMenu id="console" value="#{temperaturaFormBean.nombreGrado}" style="width:125px">
                 <f:selectItem itemLabel="Fahrenheit" itemValue="Fr" />
                 <f:selectItem itemLabel="Celsius" itemValue="Cl" />
                 <f:selectItem itemLabel="Kelvin" itemValue="Kl" />
@@ -22,16 +22,15 @@
                 
                 <p:outputLabel/>
                 <p:commandButton id="boton" value="Convertir"
-                                 update=""/>
+                                 update="panelRes"/>
+                <p:outputLabel/>
                 
-                <p:outputLabel/>
-                <p:outputLabel id="labelFahrenheit" value="Fahrenheit: #{temperaturaFormBean.fr}"/>
-                <p:outputLabel/>
-                <p:outputLabel/>
-                <p:outputLabel id="labelCelsius" value="Celsius: #{temperaturaFormBean.cl}"/>
-                <p:outputLabel/>
-                <p:outputLabel/>
-                <p:outputLabel id="labelKelvin" value="Kelvin: #{temperaturaFormBean.kl}"/>
+                <p:panel id="panelRes">
+                    <p:outputLabel id="lblFa" value="Farenheit: #{temperaturaFormBean.conversor()}"/>
+                    <p:outputLabel id="lblKl" value="Kelvin: "/>
+                    <p:outputLabel id="lblCl" value="Celsius: "/>
+                </p:panel>
+                
             </h:panelGrid>
         </p:panel>
     </h:body>

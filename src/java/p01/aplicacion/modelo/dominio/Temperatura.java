@@ -11,11 +11,16 @@ package p01.aplicacion.modelo.dominio;
  */
 public class Temperatura {
     private double grado;
-    
-    public double obtenerGradoCel(){
-        return grado;
+    private String nombreGrado;
+
+    public String getNombreGrado() {
+        return nombreGrado;
     }
 
+    public void setNombreGrado(String nombreGrado) {
+        this.nombreGrado = nombreGrado;
+    }
+    
     public double getGrado() {
         return grado;
     }
@@ -24,4 +29,31 @@ public class Temperatura {
         this.grado = grado;
     }
     
+    public void asiganarGrado(double xGrado){
+        grado=xGrado;
+    }
+    
+    public void asignarNombreGrado(String xNombre){
+        nombreGrado=xNombre;
+    }
+    
+    public void convertirGrados(){
+        if(nombreGrado.equalsIgnoreCase("Fr")){
+            System.out.println("Farenheit: " + grado);
+            System.out.println("Celsius: " + ((grado-32)/1.8));
+            System.out.println("Kelvin: " + ((grado+459.67)*5/9));
+        }
+        else{
+            if(nombreGrado.equalsIgnoreCase("Kl")){
+                System.out.println("Farenheit: "+(grado*9/5-459.67));
+                System.out.println("Kelvin: "+grado);
+                System.out.println("Celsius: "+(grado-273.15));
+            }
+            else{
+                System.out.println("Farenheit: "+ (grado*9/5 + 32));
+                System.out.println("Kelvin: "+ (grado+273.15));
+                System.out.println("Celsius: "+grado);
+            }
+        }
+    }
 }

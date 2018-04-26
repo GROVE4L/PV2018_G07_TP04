@@ -17,79 +17,19 @@ import javax.faces.bean.ViewScoped;
 @ViewScoped
 public class TemperaturaFormBean {
     
-    private Temperatura temperatura;
-    private String grado;
-    private double fr;
-    private double cl;
-    private double kl;
-
-                
-    public void convertirGrados(double valor){
-        if (grado.compareToIgnoreCase("Fr")){
-            fr=Integer.parseInt(grado);
-            kl=(Integer.parseInt(grado)+459.67)*5/9;
-            cl=(Integer.parseInt(grado)-32)*5/9;
-            }
-        else{
-            if(grado.compareToIgnoreCase("Cl")){
-                fr=Integer.parseInt(grado)+32;
-                cl=Integer.parseInt(grado);
-                kl=Integer.parseInt(grado)+273.15;
-            }
-            else{
-                if(grado.compareToIgnoreCase("KL")){
-                    fr=1.8*(Integer.parseInt(grado)-273)+32;
-                    cl=Integer.parseInt(grado)-273.15;
-                    kl=Integer.parseInt(grado);
-                }
-            }
-        }
+    private String nombreGrado;
+    private double gradoIngresado;
+    
+    public void TemperaturaFormBean(){        
+    
     }
     
-    public double getFr() {
-        return fr;
-    }
-
-    public void setFr(double fr) {
-        this.fr = fr;
-    }
-
-    public double getCl() {
-        return cl;
-    }
-
-    public void setCl(double cl) {
-        this.cl = cl;
-    }
-
-    public double getKl() {
-        return kl;
-    }
-
-    public void setKl(double kl) {
-        this.kl = kl;
-    }
-                
-    public String getGrado() {
-        return grado;
-    }
-
-    public void setGrado(String grado) {
-        this.grado = grado;
-    }
-
-    public Temperatura getTemperatura() {
-        return temperatura;
-    }
-
-    public void setTemperatura(Temperatura temperatura) {
-        this.temperatura = temperatura;
+    public void conversor(){
+        Temperatura temperatura = new Temperatura();
+        temperatura.asiganarGrado(gradoIngresado);
+        temperatura.asignarNombreGrado(nombreGrado);
+        temperatura.convertirGrados();
     }
     
-    public TemperaturaFormBean() {
-        temperatura = new Temperatura();
-    }
-    
-    
-    
-}
+}    
+
