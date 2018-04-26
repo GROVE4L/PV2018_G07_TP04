@@ -12,8 +12,7 @@
                 <p:panelGrid id="panelGrid1" columns="2" styleClass="ui-noborder">
                     <p:outputLabel value="Ingrese numero:" />
                     <p:inputNumber id="iptNumero" decimalPlaces="0" value="#{arregloNumeroFormBean.numeroIngresado}"/>
-                    <p:commandButton id="btnVer" value="Ver Tabla"/>
-                    
+                    <p/>                    
                     <p:commandButton id="btnCargar" value="Cargar" action="#{arregloNumeroFormBean.agregarNumero()}" update="panelResultado" /> 
                     <p:panel id="panelResultado">
                         <p:outputLabel value="Tamaño: #{arregloNumeroFormBean.listaNumeros.tamanoArreglo()}"/>
