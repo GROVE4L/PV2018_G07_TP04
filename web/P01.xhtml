@@ -21,12 +21,11 @@
                 </p:selectOneMenu>
                 
                 <p:outputLabel/>
-                <p:commandButton id="boton" value="Convertir"
-                                 update="panelRes"/>
+                <p:commandButton id="btnConvertir" value="Convertir" update="panelRes" />
                 <p:outputLabel/>
                 
                 <p:panel id="panelRes">
-                    <p:outputLabel id="lblFa" value="Farenheit: #{temperaturaFormBean.conversor()}"/>
+                    <p:outputLabel id="lblFa" value="Farenheit: "/>
                     <p:outputLabel id="lblKl" value="Kelvin: "/>
                     <p:outputLabel id="lblCl" value="Celsius: "/>
                 </p:panel>
@@ -35,4 +34,5 @@
         </p:panel>
     </h:body>
 </html>
+
 
