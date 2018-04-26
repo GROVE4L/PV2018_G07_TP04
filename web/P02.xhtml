@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>TP 04 - Punto 02</title>
     </h:head>
@@ -12,18 +13,20 @@
                 <p:panelGrid id="panelGrid1" columns="2" styleClass="ui-noborder">
                     <p:outputLabel value="Ingrese numero:" />
                     <p:inputNumber id="iptNumero" decimalPlaces="0" value="#{arregloNumeroFormBean.numeroIngresado}"/>
-                    <p/>                    
-                    <p:commandButton id="btnCargar" value="Cargar" action="#{arregloNumeroFormBean.agregarNumero()}" update="panelResultado" /> 
-                    <p:panel id="panelResultado">
-                        <p:outputLabel value="Tamaño: #{arregloNumeroFormBean.listaNumeros.tamanoArreglo()}"/>
-                        <p/>
-                        <p:outputLabel value="Maximo: #{arregloNumeroFormBean.listaNumeros.mayorNumero()}"/>
-                        <p/>
-                        <p:outputLabel value="Minimo: #{arregloNumeroFormBean.listaNumeros.menorNumero()}"/>
-                        <p/>
-                        <p:outputLabel value="Promedio: #{arregloNumeroFormBean.listaNumeros.promedioNumero()}"/>
-                        <p/>
-                    </p:panel>
+                    <p:commandButton id="btnCargar" value="Cargar" action="#{arregloNumeroFormBean.agregarNumero()}" update="panelGrid1" /> 
+                    <p:outputLabel value="Tamaño: #{arregloNumeroFormBean.tamanoArreglo()}"/>
+                    <p:outputLabel /> 
+                    <p:outputLabel value="Maximo: #{arregloNumeroFormBean.mayorNumero()}"/>
+                    <p:outputLabel />
+                    <p:outputLabel value="Minimo: #{arregloNumeroFormBean.menorNumero()}"/>
+                    <p:outputLabel />
+                    <p:outputLabel value="Promedio: #{arregloNumeroFormBean.promedioNumero()}"/>                    
+                    <p:dataList value="#{arregloNumeroFormBean.listaNumeros}" var="num" >
+                        <f:facet name="header">
+                            Lista de Numeros
+                        </f:facet>
+                        #{num}
+                    </p:dataList>      
                 </p:panelGrid>
             </h:form>
         </p:panel>

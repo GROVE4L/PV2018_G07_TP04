@@ -1,32 +1,33 @@
-package p02.aplicacion.modelo.dominio;
+package p02.aplicacion.controlador.beans.forms;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+
 /**
  *
  * @author Rojas, Guido G.
  */
-public class ArregloNumero implements Serializable{
+@ManagedBean
+@ViewScoped
+public class ArregloNumeroFormBean implements Serializable{
     private ArrayList<Integer> listaNumeros;
-    public ArregloNumero() {
-        listaNumeros = new ArrayList<Integer>();
-    }    
+    private int numeroIngresado;
     
-    public ArrayList<Integer> getListaNumeros() {
-        return listaNumeros;
+    public ArregloNumeroFormBean() {
+        listaNumeros = new ArrayList<Integer>();
     }
 
-    public void setListaNumeros(ArrayList<Integer> listaNumeros) {
-        this.listaNumeros = listaNumeros;
+    public void agregarNumero() {
+        this.listaNumeros.add(this.numeroIngresado);
     }
-    public void agregarNumero(int numero) {
-        listaNumeros.add(numero);
-    }
+    
     public int tamanoArreglo() {
-        return listaNumeros.size();
+        return this.listaNumeros.size();
     }
-
+    
     public int mayorNumero() {
         Iterator<Integer> iteradorNumeros = this.listaNumeros.iterator();
         int mayor=0,aux;
@@ -67,11 +68,35 @@ public class ArregloNumero implements Serializable{
         while(iteradorNumeros.hasNext()) {
             acumulador+=iteradorNumeros.next();
         }
-        if(this.listaNumeros.size() == 0) return 0;
+        if(this.listaNumeros.isEmpty()) 
+            return 0;
         else {
             double promedio = acumulador/(this.listaNumeros.size());
             return promedio;
         }
     }
     
+    public int ultimo() {
+        return this.listaNumeros.get(this.listaNumeros.size());
+    }
+    
+    public ArrayList<Integer> getListaNumeros() {
+        return listaNumeros;
+    }
+
+    public void setListaNumeros(ArrayList<Integer> listaNumeros) {
+        this.listaNumeros = listaNumeros;
+    }
+
+    public int getNumeroIngresado() {
+        return numeroIngresado;
+    }
+
+    public void setNumeroIngresado(int numeroIngresado) {
+        this.numeroIngresado = numeroIngresado;
+    }
+    
+    
+        
 }
+
