@@ -9,26 +9,23 @@
     </h:head>
     <h:body>
         <p:panel id="panel" header="Ingrese la Temperatura">
-            <h:panelGrid id="panelGrid" columns="3">
-                <p:outputLabel id="labelTemperatura" value="Grados: "/>
+            <h:panelGrid id="panelGrid" columns="2">
+                <p:outputLabel id="lblTemperatura" value="Grados: "/>
                 <p:inputNumber id="ingresarNumero" decimalPlaces="2" thousandSeparator="." decimalSeparator=","
                                value="#{temperaturaFormBean.gradoIngresado}"/>
-                        
-                <p:selectOneMenu id="console" value="#{temperaturaFormBean.nombreGrado}" style="width:125px">
-                <f:selectItem itemLabel="Fahrenheit" itemValue="Fr" />
-                <f:selectItem itemLabel="Celsius" itemValue="Cl" />
-                <f:selectItem itemLabel="Kelvin" itemValue="Kl" />
+                
+                <p:outputLabel id="lblDesde" value="Grado Centigrado: "/>
+                <p:selectOneMenu id="console1" value="#{temperaturaFormBean.nombreGrado}" style="width:125px">
+                <f:selectItem itemLabel="Fahrenheit" itemValue="Fa" />
+                <f:selectItem itemLabel="Celsius" itemValue="Ce" />
+                <f:selectItem itemLabel="Kelvin" itemValue="Ke" />
                 </p:selectOneMenu>
-                
+
                 <p:outputLabel/>
-                <p:commandButton id="btnConvertir" value="Convertir" update="panelRes" />
-                <p:outputLabel/>
-                
-                <p:panel id="panelRes">
-                    <p:outputLabel id="lblFa" value="Farenheit: "/>
-                    <p:outputLabel id="lblKl" value="Kelvin: "/>
-                    <p:outputLabel id="lblCl" value="Celsius: "/>
-                </p:panel>
+                <p:commandButton id="btnConvertir" value="Convertir" 
+                                 update="lblResultado">
+                </p:commandButton>
+                <p:outputLabel id="lblResultado" value="Resultado: #{temperaturaFormBean.conversor()}"/>
                 
             </h:panelGrid>
         </p:panel>
