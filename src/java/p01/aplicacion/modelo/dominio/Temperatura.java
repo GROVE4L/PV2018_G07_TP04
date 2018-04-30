@@ -5,20 +5,19 @@ equivalente en la escala seleccionada.
  */
 package p01.aplicacion.modelo.dominio;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Ignacio
  */
-public class Temperatura {
+public class Temperatura implements Serializable{
     private double grado;
     private String nombreGrado;
 
+
     public String getNombreGrado() {
         return nombreGrado;
-    }
-
-    public void setNombreGrado(String nombreGrado) {
-        this.nombreGrado = nombreGrado;
     }
     
     public double getGrado() {
@@ -33,27 +32,19 @@ public class Temperatura {
         grado=xGrado;
     }
     
-    public void asignarNombreGrado(String xNombre){
-        nombreGrado=xNombre;
+    public void asignarNombreGrado(String xNombreI){
+        nombreGrado=xNombreI;
+    }
+
+    public double calcularConversion(){
+        if(getNombreGrado().equalsIgnoreCase("Ke"))
+            return grado+273.15;
+        else
+            if(getNombreGrado().equalsIgnoreCase("Fa"))
+                return grado*1.8000+32;
+            else
+                return grado;
     }
     
-    public void convertirGrados(){
-        if(nombreGrado.equalsIgnoreCase("Fr")){
-            System.out.println("Farenheit: " + grado);
-            System.out.println("Celsius: " + ((grado-32)/1.8));
-            System.out.println("Kelvin: " + ((grado+459.67)*5/9));
-            }
-        else{
-            if(nombreGrado.equalsIgnoreCase("Kl")){
-                System.out.println("Farenheit: "+(grado*9/5-459.67));
-                System.out.println("Kelvin: "+grado);
-                System.out.println("Celsius: "+(grado-273.15));
-            }
-            else{
-                System.out.println("Farenheit: "+ (grado*9/5 + 32));
-                System.out.println("Kelvin: "+ (grado+273.15));
-                System.out.println("Celsius: "+grado);
-            }
-        }
-    }
 }
+    

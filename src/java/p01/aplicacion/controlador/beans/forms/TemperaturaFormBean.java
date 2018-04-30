@@ -5,6 +5,7 @@
  */
 package p01.aplicacion.controlador.beans.forms;
 
+import java.io.Serializable;
 import p01.aplicacion.modelo.dominio.Temperatura;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -15,28 +16,10 @@ import javax.faces.bean.ViewScoped;
  */
 @ManagedBean
 @ViewScoped
-public class TemperaturaFormBean {
+public class TemperaturaFormBean implements Serializable{
     private Temperatura temperatura;
     private String nombreGrado;
     private double gradoIngresado;
-    
-    public void TemperaturaFormBean(){        
-        temperatura = new Temperatura();
-    }
-    
-    public void conversor(){
-        temperatura.asiganarGrado(gradoIngresado);
-        temperatura.asignarNombreGrado(nombreGrado);
-        temperatura.convertirGrados();
-    }
-
-    public Temperatura getTemperatura() {
-        return temperatura;
-    }
-
-    public void setTemperatura(Temperatura temperatura) {
-        this.temperatura = temperatura;
-    }
 
     public String getNombreGrado() {
         return nombreGrado;
@@ -54,5 +37,14 @@ public class TemperaturaFormBean {
         this.gradoIngresado = gradoIngresado;
     }
     
+    public void TemperaturaFormBean(){
+        temperatura = new Temperatura();
+    }
+    
+    public double conversor(){
+        temperatura.asiganarGrado(getGradoIngresado());
+        temperatura.asignarNombreGrado(getNombreGrado());
+        return temperatura.calcularConversion();
+    }
 }    
 
