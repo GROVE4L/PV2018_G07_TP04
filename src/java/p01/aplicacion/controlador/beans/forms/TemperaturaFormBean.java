@@ -62,6 +62,7 @@ public class TemperaturaFormBean implements Serializable{
     public double convertir(){
         double resultado=0;
         temp = new Temperatura();
+        temp.asignarNroGrado(gradoIngresado);
         if(nombreIngresadoI == 'C' && nombreIngresadoF == 'C'){
             resultado = gradoIngresado;
         }

@@ -43,6 +43,10 @@ public class Temperatura implements Serializable{
         this.nombreGradoF = nombreGradoF;
     }
     
+    public void asignarNroGrado(double xNroGrado){
+        nroGrado = xNroGrado;
+    }
+    
     public double deCaF(){
         return nroGrado+32;
     }
