@@ -3,32 +3,45 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <title>Aplicacion Temperatura</title>
     </h:head>
     <h:body>
         <p:panel id="panel" header="Ingrese la Temperatura">
-            <h:panelGrid id="panelGrid" columns="2">
-                <p:outputLabel id="lblTemperatura" value="Grados: "/>
-                <p:inputNumber id="ingresarNumero" decimalPlaces="2" thousandSeparator="." decimalSeparator=","
-                               value="#{temperaturaFormBean.gradoIngresado}"/>
-                
-                <p:outputLabel id="lblDesde" value="Grado Centigrado: "/>
-                <p:selectOneMenu id="console1" value="#{temperaturaFormBean.nombreGrado}" style="width:125px">
-                <f:selectItem itemLabel="Fahrenheit" itemValue="Fa" />
-                <f:selectItem itemLabel="Celsius" itemValue="Ce" />
-                <f:selectItem itemLabel="Kelvin" itemValue="Ke" />
-                </p:selectOneMenu>
+            <h:form id="frmConversor">
+                <h:panelGrid id="panelGrid" columns="2">
+                    <p:outputLabel id="lblTemperatura" value="Grados: "/>
+                    <p:inputNumber id="ingresarNumero" decimalPlaces="2" thousandSeparator="." decimalSeparator=","
+                                   value="#{temperaturaFormBean.gradoIngresado}"/>
 
-                <p:outputLabel/>
-                <p:commandButton id="btnConvertir" value="Convertir" 
-                                 update="lblResultado">
-                </p:commandButton>
-                <p:outputLabel id="lblResultado" value="Resultado: #{temperaturaFormBean.conversor()}"/>
-                
-            </h:panelGrid>
-        </p:panel>
+                    <p:outputLabel id="lblDesde" value="Desde: "/>
+                    <p:selectOneMenu id="menuOrigen" value="#{temperaturaFormBean.nombreIngresadoI}">
+                        <f:selectItem itemLabel="-Seleccionar-" itemValue=""/>
+                        <f:selectItem itemLabel="Fahrenheit" itemValue="F"/>
+                        <f:selectItem itemLabel="Kelvin" itemValue="K"/>
+                        <f:selectItem itemLabel="Celsius" itemValue="C"/>
+                    </p:selectOneMenu>
+                    
+                    <p:outputLabel id="lblHasta" value="Hasta: "/>
+                    <p:selectOneMenu id="menuDestino" value="#{temperaturaFormBean.nombreIngresadoF}">
+                        <f:selectItem itemLabel="-Seleccionar-" itemValue=""/>
+                        <f:selectItem itemLabel="Fahrenheit" itemValue="F"/>
+                        <f:selectItem itemLabel="Kelvin" itemValue="K"/>
+                        <f:selectItem itemLabel="Celsius" itemValue="C"/>
+                    </p:selectOneMenu>
+
+                    <p:outputLabel/>
+                    <p:outputLabel/>
+                    <p:commandButton id="btnConvertir" value="Convertir" update="lblResultado">
+                    </p:commandButton>
+
+                    <p:outputLabel id="lblResultado" value="Resultado: #{temperaturaFormBean.convertir()}"/>
+
+                </h:panelGrid>
+            </h:form>
+    </p:panel>
     </h:body>
 </html>
 

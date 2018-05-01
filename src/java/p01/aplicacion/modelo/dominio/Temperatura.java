@@ -12,38 +12,59 @@ import java.io.Serializable;
  * @author Ignacio
  */
 public class Temperatura implements Serializable{
-    private double grado;
-    private String nombreGrado;
+    private double nroGrado;
+    private String nombreGradoI;
+    private String nombreGradoF;
 
+    public Temperatura() {
+    }
 
-    public String getNombreGrado() {
-        return nombreGrado;
+    public double getNroGrado() {
+        return nroGrado;
+    }
+
+    public void setNroGrado(double nroGrado) {
+        this.nroGrado = nroGrado;
+    }
+
+    public String getNombreGradoI() {
+        return nombreGradoI;
+    }
+
+    public void setNombreGradoI(String nombreGradoI) {
+        this.nombreGradoI = nombreGradoI;
+    }
+
+    public String getNombreGradoF() {
+        return nombreGradoF;
+    }
+
+    public void setNombreGradoF(String nombreGradoF) {
+        this.nombreGradoF = nombreGradoF;
     }
     
-    public double getGrado() {
-        return grado;
-    }
-
-    public void setGrado(double grado) {
-        this.grado = grado;
+    public double deCaF(){
+        return nroGrado+32;
     }
     
-    public void asiganarGrado(double xGrado){
-        grado=xGrado;
+    public double deCaK(){
+        return nroGrado+273.15;
     }
     
-    public void asignarNombreGrado(String xNombreI){
-        nombreGrado=xNombreI;
+    public double deFaC(){
+        return  (nroGrado-32)*5/9;
+    }
+    
+    public double deFaK(){
+        return (nroGrado+459.67)*5/9;
     }
 
-    public double calcularConversion(){
-        if(getNombreGrado().equalsIgnoreCase("Ke"))
-            return grado+273.15;
-        else
-            if(getNombreGrado().equalsIgnoreCase("Fa"))
-                return grado*1.8000+32;
-            else
-                return grado;
+    public double deKaF(){
+        return nroGrado*9/5-459.67;
+    }
+
+    public double deKaC(){
+        return nroGrado-273.15;
     }
     
 }
