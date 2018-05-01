@@ -13,8 +13,7 @@ import java.io.Serializable;
  */
 public class Temperatura implements Serializable{
     private double nroGrado;
-    private String nombreGradoI;
-    private String nombreGradoF;
+
 
     public Temperatura() {
     }
@@ -25,22 +24,6 @@ public class Temperatura implements Serializable{
 
     public void setNroGrado(double nroGrado) {
         this.nroGrado = nroGrado;
-    }
-
-    public String getNombreGradoI() {
-        return nombreGradoI;
-    }
-
-    public void setNombreGradoI(String nombreGradoI) {
-        this.nombreGradoI = nombreGradoI;
-    }
-
-    public String getNombreGradoF() {
-        return nombreGradoF;
-    }
-
-    public void setNombreGradoF(String nombreGradoF) {
-        this.nombreGradoF = nombreGradoF;
     }
     
     public void asignarNroGrado(double xNroGrado){
