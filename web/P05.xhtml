@@ -8,27 +8,45 @@
         <title>TP 04 - Punto 05</title>
     </h:head>
     <h:body>
-        <p:panel id="panel1" header="Ingreso de Profesor">
-            <h:form id="form1">
-                <p:panelGrid id="panelGrid1" columns="2" styleClass="ui-noborder">                    
-                    <p:outputLabel value="Ingrese nombre profesor" />
-                    <p:inputText id="imputNombre" value="#{profesorFormBeans.nombreIngresado}"/>
-                    <p:outputLabel value="Ingrese apellido profesor" />
-                    <p:inputText id="imputapellido" value="#{profesorFormBeans.apellidoIngresado}"/>
-                    <p:outputLabel value="Ingrese materia a cargo del profesor" />
-                    <p:inputText id="imputMateria" value="#{profesorFormBeans.materiaIngresada}"/>                    
-                    <p:commandButton id="btnAgregar" onclick="PF('dlg2').show();" value="Cargar Profesor" action="#{profesorFormBeans.agregarProfesor()}" update="lblCantProfesores"/>
-                    
-                    <p:outputLabel id="lblCantProfesores" value="Profesores cargado: #{profesorFormBeans.cantidadProfesores()}" />
-                    <p:dataList value="#{profesorFormBeans.listaProfesor}" var="prof" type="ordered">
-                    <f:facet name="header">
-                        Lista de Profesores
-                    </f:facet>
-                        #{prof.apellido}, #{prof.nombre} - #{prof.materia}
-                </p:dataList> 
-                </p:panelGrid>
-            </h:form>
-        </p:panel>
+        <p:growl id="growl" showDetail="true" sticky="true" /> 
+            <p:panel id="panel1" header="Ingreso de Profesor">
+                <h:form id="form1">
+                    <p:panelGrid id="panelGrid1" columns="2" styleClass="ui-noborder">             
+                        
+                        
+                        <p:outputLabel for="imputNombre" value="Ingrese nombre profesor" />
+                        <p:inputText id="imputNombre" value="#{profesorFormBeans.nombreIngresado}" 
+                                     placeholder="Ingresar Nombre" required="true" requiredMessage="Nesecita ingresar un Nombre">
+                            <f:validateLength maximum="20"/> 
+                        </p:inputText>
+                        
+                        
+                        <p:outputLabel for="imputapellido" value="Ingrese apellido profesor" />
+                        <p:inputText id="imputapellido" value="#{profesorFormBeans.apellidoIngresado}" 
+                                     placeholder="Ingresar Apellido" required="true" requiredMessage="Necesita ingresar un Apellido"/>
+                        
+                        <p:outputLabel for="imputEmail" value="Ingrese email Profesor" />
+                        <p:inputText id="imputEmail" value="#{profesorFormBeans.emailIgresado}" 
+                                     placeholder="email@dominio" required="true" requiredMessage="Necesita ingresar un Email" validator="#{profesorFormBeans.validarEmail}"/>
+                        
+                        <p:outputLabel for="imputMateria" value="Ingrese materia a cargo del profesor" />
+                        <p:inputText id="imputMateria" value="#{profesorFormBeans.materiaIngresada}" 
+                                     placeholder="Ingrese Materia" required="true" requiredMessage="Necesita ingresar una Materia"/>     
+                        
+                        
+                        <p:commandButton id="btnAgregar" onclick="PF('dlg2').show();" value="Cargar Profesor" 
+                                         action="#{profesorFormBeans.agregarProfesor()}" update="lblCantProfesores growl"/>
+
+                        <p:outputLabel id="lblCantProfesores" value="Profesores cargado: #{profesorFormBeans.cantidadProfesores()}" />
+                        <p:dataList value="#{profesorFormBeans.listaProfesor}" var="prof" type="ordered">
+                        <f:facet name="header">
+                            Lista de Profesores
+                        </f:facet>
+                            #{prof.apellido}, #{prof.nombre} - #{prof.materia}
+                    </p:dataList> 
+                    </p:panelGrid>
+                </h:form>
+            </p:panel>
     </h:body>
 </html>
 
