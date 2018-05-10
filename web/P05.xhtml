@@ -34,19 +34,54 @@
                                      placeholder="Ingrese Materia" required="true" requiredMessage="Necesita ingresar una Materia"/>     
                         
                         
-                        <p:commandButton id="btnAgregar" onclick="PF('dlg2').show();" value="Cargar Profesor" 
-                                         action="#{profesorFormBeans.agregarProfesor()}" update="lblCantProfesores growl"/>
+                        <p:commandButton id="btnAgregar" value="Cargar Profesor" 
+                                         action="#{profesorFormBeans.agregarProfesor()}" update="lblCantProfesores growl tablaProfes"/>
 
                         <p:outputLabel id="lblCantProfesores" value="Profesores cargado: #{profesorFormBeans.cantidadProfesores()}" />
-                        <p:dataList value="#{profesorFormBeans.listaProfesor}" var="prof" type="ordered">
-                        <f:facet name="header">
-                            Lista de Profesores
-                        </f:facet>
-                            #{prof.apellido}, #{prof.nombre} - #{prof.materia}
-                    </p:dataList> 
                     </p:panelGrid>
+                
+                    <p:dataTable id="tablaProfes" var="profesor" value="#{profesorFormBeans.listaProfesor}">
+                        <p:column headerText="Apellido" >
+                            <h:outputText value="#{profesor.apellido}"/>
+                        </p:column>
+
+                        <p:column headerText="Nombre" >
+                            <h:outputText value="#{profesor.nombre}"/>
+                        </p:column>
+
+                        <p:column headerText="Email" >
+                            <h:outputText value="#{profesor.email}"/>
+                        </p:column>
+
+                        <p:column headerText="Materia" >
+                            <h:outputText value="#{profesor.materia}"/>
+                        </p:column>
+
+                        <p:column headerText="Mostrar" >
+                            <p:commandButton id="btnDialog" value="Ver"
+                                             actionListener="#{profesorFormBeans.seleccionarProfesor(profesor)}"
+                                             oncomplete="PF('dlg2').show();"
+                                             update=":dlgDatosProfesor"/>
+                        </p:column>
+                    </p:dataTable>                    
+                    
                 </h:form>
             </p:panel>
+        
+        <p:dialog id="dlgDatosProfesor" header="Dialog Profe" 
+                  widgetVar="dlg2" modal="true" minHeight="40" visible="true">
+            <h:form>    
+            <p:panelGrid id="pnlMostrarDatosProf">
+                    <p:outputLabel id="lblApellidoProfesor" value="#{profesorFormBeans.profesorSeleccinado.apellido}"/>
+                    <p/>
+                    <p:outputLabel id="lblNombreProfesor" value="#{profesorFormBeans.profesorSeleccinado.nombre}"/>
+                    <p/>
+                    <p:outputLabel id="lblEmailProfesor" value="#{profesorFormBeans.profesorSeleccinado.email}"/>
+                    <p/>
+                    <p:outputLabel id="lblMateriaProfesor" value="#{profesorFormBeans.profesorSeleccinado.materia}"/>
+                </p:panelGrid>
+            </h:form>
+        </p:dialog> 
     </h:body>
 </html>
 

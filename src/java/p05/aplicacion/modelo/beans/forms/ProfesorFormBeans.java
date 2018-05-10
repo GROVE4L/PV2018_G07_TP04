@@ -26,6 +26,10 @@ public class ProfesorFormBeans implements Serializable{
     private String materiaIngresada;    
     private String emailIgresado;
     
+    private Profesor profesorSeleccinado;
+    
+    
+    
     public void validarEmail(FacesContext context, UIComponent component, Object value)throws ValidatorException{
             Pattern pattern;
             String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
@@ -53,6 +57,18 @@ public class ProfesorFormBeans implements Serializable{
                 
         FacesContext context = FacesContext.getCurrentInstance();
         context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Felicidades",  "Añadido correctamente") );
+    }
+
+    public Profesor getProfesorSeleccinado() {
+        return profesorSeleccinado;
+    }
+
+    public void setProfesorSeleccinado(Profesor profesorSeleccinado) {
+        this.profesorSeleccinado = profesorSeleccinado;
+    }
+    
+    public void seleccionarProfesor(Profesor profesor){
+        this.profesorSeleccinado = profesor;
     }
 
     public ArrayList<Profesor> getListaProfesor() {
